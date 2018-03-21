@@ -22,10 +22,10 @@ class OrganizeViewWindow(gtk.Window):
         title_box.pack_start(title_label, expand=True, fill=True, padding=10)
 
         # Hide and show labels
+	show_label = gtk.Label("Show")
+        table.attach(show_label, 1, 2, 0, 1)
         hide_label = gtk.Label("Hide")
-        table.attach(hide_label, 1, 2, 0, 1)
-        show_label = gtk.Label("Show")
-        table.attach(show_label, 2, 3, 0, 1)
+        table.attach(hide_label, 2, 3, 0, 1)
 
         # Project navigation radio buttons
         proj_nav_label = gtk.Label("Project Navigation")
