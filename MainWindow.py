@@ -9,6 +9,8 @@ from ExportWindow import ExportWindow
 from OrganizeViewWindow import OrganizeViewWindow
 from DissectorScriptWindow import DissectorScriptWindow
 from ProjectImportWindow import ProjectImportWindow
+from NewProjectWindow import NewProjectWindow
+from WorkspaceLauncherWindow import WorkspaceLauncherWindow
 
 
 class MainWindow(gtk.Window):
@@ -30,12 +32,14 @@ class MainWindow(gtk.Window):
 
         # Button1
         btn1 = gtk.Button(label="Create Project")
+        btn1.connect("clicked", self.show_NewProjectWindow)
         # Button2
         btn2 = gtk.Button(label="Save Project")
         # Button3
         btn3 = gtk.Button(label="Close Project")
         # Button4
         btn4 = gtk.Button(label="Switch Workspace")
+        btn4.connect("clicked", self.show_WorkspaceLauncherWindow)
         # Button5
         btn5 = gtk.Button(label="Import Project")
         btn5.connect("clicked", self.show_ProjectImportWindow)
@@ -272,6 +276,12 @@ class MainWindow(gtk.Window):
         self.set_default_size(0, 700)
         self.show_all()
 
+    def show_WorkspaceLauncherWindow(self, widget):
+        wsl = WorkspaceLauncherWindow()
+
+    def show_NewProjectWindow(self, widget):
+        npWindow = NewProjectWindow()
+    
     def show_StartFieldWindow(self, widget):
         sfWindow = StartFieldWindow(parent=self)
 
