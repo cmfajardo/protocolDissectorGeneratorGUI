@@ -17,7 +17,7 @@ class ProjectImportWindow(gtk.Window):
         #Buttons Box
         vbox1 = gtk.VBox()
         box1 = gtk.HButtonBox()
-				
+
         #Button1
         btn1 = gtk.Button(label="Import")
         #Button2
@@ -32,8 +32,27 @@ class ProjectImportWindow(gtk.Window):
 
 		#TextView1
         dba1 = gtk.TextView()
-        dba1.set_size_request(250, 20)    
-		
+        dba1.set_size_request(250, 20)
+
+        # Method for canceling
+        def cancel(widget,callback_data = None):
+            self.destroy()
+
+        # Method for opening a browse window
+        def chooseFile(self, textview):
+            dialog = gtk.FileChooserDialog("Open..", None, gtk.FILE_CHOOSER_ACTION_OPEN,(gtk.STOCK_OPEN, gtk.RESPONSE_OK, gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL))
+            dialog.set_default_response(gtk.RESPONSE_OK)
+            response = dialog.run()
+            if response == gtk.RESPONSE_OK:
+                textBuffer = gtk.TextBuffer()
+                textBuffer.set_text(dialog.get_filename())
+                textview.set_buffer(textBuffer)
+            dialog.destroy()
+
+        # set the action of the button
+        btn2.connect('clicked',cancel)
+        btn3.connect('clicked',chooseFile,dba1)
+
         #VBox
         vbox1.add(box1)
         vbox1.set_border_width(5)
