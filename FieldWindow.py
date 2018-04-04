@@ -7,7 +7,6 @@ class FieldWindow(gtk.Dialog):
         #Field Window
         super(FieldWindow, self).__init__(parent=parent)
         self.set_title("Field [Abbreviation]")
-        self.set_size_request(430,230)
 
         #Table
         table = gtk.Table(9, 6)
@@ -88,9 +87,8 @@ class FieldWindow(gtk.Dialog):
         requiredLbl = gtk.Label("Required")
         table.attach(requiredLbl, 0, 1, 8, 9)
 
-        requiredTxt = gtk.TextView()
-        requiredTxt.set_size_request(300,10)
-        table.attach(requiredTxt, 1, 5, 8, 9)
+        requiredTxt = gtk.CheckButton(None)
+        table.attach(requiredTxt, 1, 5, 8, 9, xpadding=140)
 
         fixed = gtk.Fixed()
         fixed.put(table, 5, 15)
